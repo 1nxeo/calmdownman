@@ -14,79 +14,18 @@
 
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="../static/css/total.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <script src="../static/js/login.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 
     <title>최고 민수야 고마워</title>
 
     <style>
-        * {
-            font-family: 'Gowun Dodum', sans-serif;
-        }
-
-        .wrap {
-            margin:50px auto;
-            width: 350px;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0px 0px 3px 0px gray;
-        }
-
-        .mytitle {
-            color: white;
-            width: 300px;
-            height: 400px;
-            background-image: url('https://w.namu.la/s/2cd5110fc9e9e2f8c67f05fa5fb1d7f20957a29c80203d0c63864960640fd8b7d618ee394c9efb04d0da86512ea9a7b6a9adb7422ea2c82051286c31c975c335851b8adf995afce3cc1101ce5b98f58791df742782d870d3e5085a0dcd5d45d0');
-            background-position: center;
-            background-size: cover;
 
 
-            border-radius: 10px;
-            text-align: center;
-            padding-top: 40px;
-        }
-
-        .text-area {
-            margin: 10px auto;
-        }
-
-        .sign_button{
-
-        }
     </style>
 
-    <script>
-        $(document).ready(function () {
-
-        });
-
-        function login() {
-            $.ajax({
-                type: "POST",
-                url: "/api/login",
-                data: {
-                    id_give : $('#login_id').val(),
-                    pw_give : $('#login_pw').val()},
-                success: function (response){
-                    if (response['result'] == 'success' ) {
-                    console.log(response)
-                        $.cookie('mytoken', response['token']);
-                        alert("로그인 되었습니다")
-                        window.location.href = '/index'
-                    }
-                    else {
-                        alert(response['result'])
-                    }
-
-
-                }
-            });
-        }
-
-        function signup() {
-                    window.location.href = '/signup'
-        }
-    </script>
 
 </head>
 
@@ -97,17 +36,18 @@
             <h1>로그인 페이지</h1>
             <h5>ID,PW를 입력해주세요</h5>
         </div>
-                <div class="form-floating mb-3">
-        <input id="login_id" type="email" class="form-control" placeholder="name@example.com">
-        <label> ID </label>
-    </div>
-    <div class="form-floating mb-3">
-        <input id="login_pw" type="email" class="form-control" placeholder="name@example.com">
-        <label> PW </label>
-    </div>
-
-        <div class="sign_button">
-            <button onclick="login()" type="button" class="btn btn-secondary">로그인</button>
+        <div class="text-area">
+            <div class="mb-3">
+                <label for="login_id" class="form-label">ID</label>
+                <input type="email" class="form-control" id="login_id" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="login_pw" class="form-label">Password</label>
+                <input type="password" class="form-control" id="login_pw">
+            </div>
+        </div>
+        <div class="sign_button" style="display:flex; justify-content: center;">
+            <button onclick="login()" type="button" class="btn btn-secondary" style="margin-right: 10px;">로그인</button>
             <button onclick="signup()" type="button" class="btn btn-secondary">회원가입</button>
         </div>
     </div>

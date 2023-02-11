@@ -135,6 +135,7 @@ def write_post():
 
     return jsonify({'msg':'저장 완료!'})
 
+
 @app.route("/write/get", methods=["GET"])
 def write_get():
     write_list = list(db.write.find({}, {'_id': False}))
@@ -175,4 +176,4 @@ def api_valid():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=5001, debug=True)
